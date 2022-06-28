@@ -149,7 +149,11 @@ const App = () => {
                 component={ChangePassword}
                 options={{headerShown: false}}
               />
-              <Stack.Screen name="AbsenKeluar" component={AbsenKeluar} />
+              <Stack.Screen
+                name="AbsenKeluar"
+                component={AbsenKeluar}
+                options={{headerShown: false}}
+              />
             </>
           )}
         </Stack.Navigator>

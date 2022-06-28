@@ -28,14 +28,11 @@ export default function ProfileScreen({navigation}) {
       const userID = await AsyncStorage.getItem('userID');
 
       axios
-        .get(
-          `http://192.168.1.12:8080/skripsi-backend/public/restapiuserpegawai/${userID}`,
-          {
-            headers: {
-              Authorization: `Bearer ${access_token}`,
-            },
+        .get(`https://absensibuana.my.id/restapiuserpegawai/${userID}`, {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
           },
-        )
+        })
         .then(res => {
           setLoading(false);
           setDataUser(res.data.pegawai[0]);

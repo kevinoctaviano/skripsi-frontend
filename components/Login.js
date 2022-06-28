@@ -39,13 +39,9 @@ const Login = () => {
       'Content-Type': 'application/json',
     };
     axios
-      .post(
-        'http://192.168.1.12:8080/skripsi-backend/public/authentikasi',
-        userLogin,
-        {
-          headers: headers,
-        },
-      )
+      .post('https://absensibuana.my.id/authentikasi', userLogin, {
+        headers: headers,
+      })
       .then(response => {
         if (response.data.status === 400) {
           return setError(response.messages);

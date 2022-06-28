@@ -65,7 +65,6 @@ export default function AbsenKeluar({route}) {
           setIsBarcodeRead(false);
         });
     } catch (error) {
-      console.log(error.response.data);
       if (error.response.status === 401) {
         await signOut(`${error.response.data.message}`);
       }

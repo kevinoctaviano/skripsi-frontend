@@ -45,7 +45,8 @@ export default function ChangePassword() {
 
     try {
       const result = await axios.put(
-        `http://192.168.1.12:8080/skripsi-backend/public/restapiuserpegawai/${userID}`,
+        // `http://192.168.1.12:8080/skripsi-backend/public/restapiuserpegawai/${userID}`,
+        `https://absensibuana.my.id/restapiuserpegawai/${userID}`,
         userChangePassword,
         {
           headers: {
@@ -66,7 +67,7 @@ export default function ChangePassword() {
 
   return (
     <SafeAreaView style={style.viewChangePassword}>
-      <Image source={changePassword} style={style.imageChangePassword} />
+      <Image source={changePassword} />
       <Text style={style.ubahPassword}>Ubah Password</Text>
       <View style={style.changePassword}>
         <TextInput

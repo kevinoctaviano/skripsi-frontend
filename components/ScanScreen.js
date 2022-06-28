@@ -19,14 +19,20 @@ export default function ScanScreen() {
           text: 'OK',
           onPress: () => {
             // reset everything
-            setIsBarcodeRead(false);
             setBarcodeType('');
             setMessage('');
+            setIsBarcodeRead(false);
           },
         },
       ]);
     }
   }, [isBarcodeRead, barcodeType, message]);
+
+  // const onSuccess = e => {
+  //   Linking.openURL(e.data).catch(err =>
+  //     console.error('An error occured', err),
+  //   );
+  // };
 
   const onBarcodeRead = async barcodes => {
     try {
@@ -48,6 +54,7 @@ export default function ScanScreen() {
             setBarcodeType(barcodes.type);
             setMessage(res.data.messages.success);
           }
+          setIsBarcodeRead(false);
         })
         .catch(err => {
           if (isBarcodeRead === false) {
@@ -60,9 +67,9 @@ export default function ScanScreen() {
               signOut(`${err.response.data.message}`);
             }
           }
+          setIsBarcodeRead(false);
         });
     } catch (error) {
-      console.log(error.response.data);
       if (error.response.status === 401) {
         await signOut(`${error.response.data.message}`);
       }

@@ -54,16 +54,12 @@ export default function Home({navigation}) {
       const access_token = await AsyncStorage.getItem('userToken');
       const userID = await AsyncStorage.getItem('userID');
       axios
-        .get(
-          `http://192.168.1.12:8080/skripsi-backend/public/restapipegawai/${userID}`,
-          {
-            headers: {
-              Authorization: `Bearer ${access_token}`,
-            },
+        .get(`https://absensibuana.my.id/restapipegawai/${userID}`, {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
           },
-        )
+        })
         .then(res => {
-          // console.log(res.data.absensi);
           setLoading(false);
           setDataAbsen(res.data.absensi);
           setDataAbsenKosong(false);
@@ -71,7 +67,7 @@ export default function Home({navigation}) {
         })
         .catch(err => {
           setLoading(true);
-          // console.error(err.response.status);
+          console.error(err.response);
           if (err.response.status === 401) {
             signOut(`${err.response.data.message}`);
           }
@@ -98,14 +94,11 @@ export default function Home({navigation}) {
       const access_token = await AsyncStorage.getItem('userToken');
       const userID = await AsyncStorage.getItem('userID');
       axios
-        .get(
-          `http://192.168.1.12:8080/skripsi-backend/public/restapipegawai/${userID}`,
-          {
-            headers: {
-              Authorization: `Bearer ${access_token}`,
-            },
+        .get(`https://absensibuana.my.id/restapipegawai/${userID}`, {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
           },
-        )
+        })
         .then(res => {
           setRefresh(false);
           setDataAbsen(res.data.absensi);
