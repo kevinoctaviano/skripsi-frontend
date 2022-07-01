@@ -7,6 +7,7 @@ import {
   ImageBackground,
   SafeAreaView,
   Image,
+  ActivityIndicator,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {style} from '../assets/style';
@@ -20,6 +21,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [eyeSlash, setEyeSlash] = useState(false);
   const [secure, setSecure] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState({});
   const {signIn} = React.useContext(AuthContext);
 
@@ -29,6 +31,7 @@ const Login = () => {
   };
 
   const loginHandle = () => {
+    setIsLoading(true);
     const userLogin = {
       email: email,
       password: password,
@@ -43,6 +46,7 @@ const Login = () => {
         headers: headers,
       })
       .then(response => {
+        setIsLoading(false);
         if (response.data.status === 400) {
           return setError(response.messages);
         }
@@ -55,6 +59,7 @@ const Login = () => {
         }
       })
       .catch(err => {
+        setIsLoading(false);
         if (err.response.status === 400) {
           setError(err.response.data.messages);
         }
@@ -122,7 +127,11 @@ const Login = () => {
           </View>
         )}
         <TouchableOpacity style={style.buttonSignIn} onPress={loginHandle}>
-          <Text style={style.textSignIn}>LOGIN</Text>
+          {isLoading === true ? (
+            <ActivityIndicator size="small" color="#30336b" />
+          ) : (
+            <Text style={style.textSignIn}>LOGIN</Text>
+          )}
         </TouchableOpacity>
       </SafeAreaView>
     </ImageBackground>

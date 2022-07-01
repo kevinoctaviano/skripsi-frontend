@@ -45,18 +45,18 @@ export default function AbsenKeluar({route}) {
         })
         .then(res => {
           if (isBarcodeRead === false) {
-            setIsBarcodeRead(true);
-            setBarcodeType(barcodes.type);
             setMessage(res.data.messages.success);
+            setBarcodeType(barcodes.type);
+            setIsBarcodeRead(true);
           }
           setIsBarcodeRead(false);
         })
         .catch(err => {
           if (isBarcodeRead === false) {
             if (err.response.status === 400) {
-              setIsBarcodeRead(true);
-              setBarcodeType(barcodes.type);
               setMessage(err.response.data.messages.error);
+              setBarcodeType(barcodes.type);
+              setIsBarcodeRead(true);
             }
             if (err.response.status === 401) {
               signOut(`${err.response.data.message}`);
