@@ -10,7 +10,7 @@ export default function AbsenCell({index, item, navigation}) {
         <>
           <Text style={lists.cell}>{++index}</Text>
           <Text style={lists.cell}>
-            {moment(item.absen_masuk).format('dddd, MMM Do YYYY')}
+            {moment(item.waktu).format('dddd, MMM Do YYYY')}
           </Text>
           <Text style={lists.cell}>
             {moment(item.absen_masuk).format('h:mm a')}
