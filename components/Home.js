@@ -154,7 +154,12 @@ export default function Home({navigation}) {
               initialNumToRender={1}
               keyExtractor={(item, index) => index.toString()}
               renderItem={({item, index}) => (
-                <AbsenCell item={item} index={index} navigation={navigation} />
+                <AbsenCell
+                  item={item}
+                  index={index}
+                  navigation={navigation}
+                  absen={dataAbsen}
+                />
               )}
               refreshControl={
                 <RefreshControl

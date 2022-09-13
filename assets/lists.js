@@ -5,6 +5,11 @@ const lists = StyleSheet.create({
     flexDirection: 'row',
     padding: 15,
   },
+  wrappers: {
+    flexDirection: 'row',
+    padding: 15,
+    marginBottom: 70,
+  },
   cell: {
     flex: 1,
     fontFamily: 'Poppins-Regular',

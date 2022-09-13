@@ -3,9 +3,9 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {lists} from '../assets/lists';
 import moment from 'moment';
 
-export default function AbsenCell({index, item, navigation}) {
+export default function AbsenCell({index, item, navigation, absen}) {
   return (
-    <View style={lists.wrapper}>
+    <View style={index === absen.length - 1 ? lists.wrappers : lists.wrapper}>
       {item.absen_keluar === null ? (
         <>
           <Text style={lists.cell}>{++index}</Text>
